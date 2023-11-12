@@ -9,7 +9,9 @@ const QrCode = () => {
 
   const handleDownloadClick = () => {
     const canvas = document.querySelector("canvas");
-    const imgUrl = canvas.toDataURL(`image/${imgType}`).replace(`image/${imgType}`, "image/octet-stream");
+    const imgUrl = canvas
+      .toDataURL(`image/${imgType}`)
+      .replace(`image/${imgType}`, "image/octet-stream");
 
     const downloadLink = document.createElement("a");
     downloadLink.href = imgUrl;
@@ -20,20 +22,20 @@ const QrCode = () => {
   };
 
   return (
-    <section className="w-72 md:w-96 lg:w-96 py-6 rounded mx-auto mt-12 flex flex-col items-center">
+    <section className="w-[90%] md:w-[500px] py-6 rounded-lg flex flex-col items-center gap-[20px] lg:gap-[30px] shadow-lg border">
       <QRCode value={text} className="border-8 border-white" />
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter URL"
-        className="w-3/4 my-6 outline-none bg-transparent text-white border-b border-white placeholder-white"
+        className="w-[90%] h-[50px] pl-[5px] outline-none bg-stone-50 border rounded"
       />
       <input
         type="text"
         onChange={(e) => setImgName(e.target.value)}
         placeholder="Enter QR Code name"
-        className="w-3/4 my-6 outline-none bg-transparent text-white border-b border-white placeholder-white"
+        className="w-[90%] h-[50px] pl-[5px] outline-none bg-stone-50 border rounded"
       />
 
       <div className="flex" role="group">
@@ -62,11 +64,11 @@ const QrCode = () => {
 
       <button
         onClick={handleDownloadClick}
-        className="bg-green-600 text-white rounded p-2 mt-6"
+        className="bg-green-600 text-white rounded p-2"
       >
         Download QR Code
       </button>
-      <Footer/>
+      <Footer />
     </section>
   );
 };
